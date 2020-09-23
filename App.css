@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 1fr auto;
+    grid-template-areas: 
+        "image sideBar"
+        "Slider sideBar";
+    height: 100vh;
+    width: 100vw;
+    background-color: slategray;
+}
+
+.main-image {
+    grid-area: image;
+    background-image: url("./pinguin.png");
+    width: 100%;
+    height: 100%;
+    background-position: top center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.sideBar {
+    grid-area: sideBar;
+    background-color: hsl(0, 0%, 50%);
+    border-left: 1px solid hsl(0, 0%, 10%);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+.sidebar-item {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: rgb(207, 207, 207);
+    background-color: hsl(0, 0%, 42%);
+    padding: 1rem;
+    position: relative;
+    transition: all 350ms;
+}
+.sidebar-item:hover, .sidebar-item:focus{
+    background-color: hsl(0, 0%, 35%);
+}
+.sidebar-item.active {
+    background-color: hsl(0, 0%, 18%);
+}
+.sidebar-item::after{
+    content: "";
+    position: absolute;
+    width: 80%;
+    bottom: 0;
+    left: 10%;
+    background-color: white;
+    height: 1px;
+}
+
+.Slider-container {
+    grid-area: Slider;
+    margin-top: 2rem;
+    padding: 2rem;
+}
+
+.Slider {
+    width: 100%;
+    cursor: pointer;
+}
