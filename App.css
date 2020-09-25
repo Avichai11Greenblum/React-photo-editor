@@ -38,6 +38,7 @@
     border: none;
     outline: none;
     cursor: pointer;
+    width: 100%;
     color: rgb(207, 207, 207);
     background-color: hsl(0, 0%, 42%);
     padding: 1rem;
@@ -59,6 +60,7 @@
     background-color: white;
     height: 1px;
 }
+
 
 .Slider-container {
     grid-area: Slider;
