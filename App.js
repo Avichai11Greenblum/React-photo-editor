@@ -26,7 +26,7 @@ const DEFAULT_OPTIONS = [
   },  
   {
     name: "Saturation",
-    property: "saturation",
+    property: "saturate",
     value: 100,
     unit: '%',
     range: {
@@ -78,10 +78,12 @@ const DEFAULT_OPTIONS = [
 
 function App() {
 
+  // Hooks 
   const [selectedOptionIndex, setSelectedOptionIndex] = useState(0);
   const [options, setOptions] = useState(DEFAULT_OPTIONS);
   const selectedOption = options[selectedOptionIndex];
 
+  // A function that will update the options variable after we adjusted the slider to a filter
   function handleSliderChange( {target} ){
     setOptions(prevOptions => {
         return prevOptions.map( (option, index) => {
@@ -91,9 +93,20 @@ function App() {
     })
   }
 
+  // A function that will be a prop for the main image div and will use the object values as 
+  // filters in css with their correct unit of measurement
+  function getImageStyle() {
+    const filters = options.map( ele => {
+      return `${ele.property}(${ele.value}${ele.unit})`
+    })
+
+    // The function returns an object of all the options with their values as a script for style 
+    return { filter: filters.join(" ") }
+  };
+
   return(
     <div className="container">
-      <div className="main-image"/>
+      <div className="main-image" style={getImageStyle()}/>
       <div className="sideBar">
         {options.map( (option, index) => {
           return (
